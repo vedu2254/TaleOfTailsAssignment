@@ -59,7 +59,7 @@ export const Splash = (props: splashProps) => {
   return (
     <Animated.View
       collapsable={false}
-      style={[style.container, {opacity: containerOpacity}]}>
+      style={[style.container,  {opacity: containerOpacity}]}>
       <Animated.Image
         source={require('./assets/splash.png')}
         fadeDuration={0}
@@ -67,7 +67,7 @@ export const Splash = (props: splashProps) => {
           setState(SplashState.FadeIn);
         }}
         style={[style.image, {opacity: imageOpacity}]}
-        resizeMode="cover"
+        // resizeMode="cover"
       />
     </Animated.View>
   );
@@ -76,14 +76,15 @@ export const Splash = (props: splashProps) => {
 const style = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'black',
+    backgroundColor: 'white',
+    color:"white",
     alignItems: 'center',
     justifyContent: 'center', 
     marginTop: '80%',   
   },
   image: {
-    width: 250,
-    height: 250,
+    width: 350,
+    height: 200,
     alignItems: 'center',
     justifyContent: 'center',
   },

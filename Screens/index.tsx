@@ -3,6 +3,8 @@ import {StatusBar, StyleSheet, Text, TextInput, View} from 'react-native';
 import {ImageOrVideo} from 'react-native-image-crop-picker';
 import {Avatar} from './Avatar';
 import {UserInfo} from './UserInfo';
+import Customdatepicker from "../src/components/datepicker";
+
 // import {Gallery} from './Gallery';
 
 export const Profile = () => {
@@ -30,8 +32,9 @@ export const Profile = () => {
       <TextInput
             placeholder="Fluffy"
             placeholderTextColor="#666666"
-            keyboardType="email-address"
+            // keyboardType="email-address"
             autoCorrect={false}
+            // style={{borderColor: 'black', }}
             // borderColor
            
           />
@@ -41,6 +44,19 @@ export const Profile = () => {
           onChange={onAvatarChange}
           source={require('./avatar-placeholder.png')}
         />
+
+        <Text style={{color: 'black', fontSize: 17}}>Date of Birth</Text>
+        <Customdatepicker
+          textStyle={{
+            paddingVertical: 15,
+            paddingHorizontal: 10,
+            borderColor: "#D3D3D3",
+            borderWidth: 1,
+          }}
+          onDateChange={(value) => console.log("Date Changed:" + value)}
+        />
+
+
       </View>
         {/* <UserInfo /> */}
       <View style={styles.content} />
