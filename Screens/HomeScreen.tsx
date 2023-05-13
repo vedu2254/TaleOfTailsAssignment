@@ -10,7 +10,7 @@ const HomeScreen = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text>Welcome</Text>
+      <Text>Go to Profile tab to change pet details</Text>
     </View>
   );
 };

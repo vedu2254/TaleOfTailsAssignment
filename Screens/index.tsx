@@ -12,9 +12,23 @@ import {Avatar} from './Avatar';
 import {UserInfo} from './UserInfo';
 import Customdatepicker from '../src/components/datepicker';
 import {useState} from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+// import Icon from 'react-native-vector-icons/MaterialIcons';
+import RadioButton from '../src/components/RadioButton';
+import { useNavigation } from '@react-navigation/native';
+import HomeScreen from './HomeScreen';
+
 
 export const Profile = () => {
+  
+  const data = [
+    { value: 'Female' },
+    { value: 'Male' },
+  ];
+
+//   const onTestPress = () => {
+//     this.props.navigator.push('page2');
+// }
+
   const [counter, setCounter] = useState(0);
 
   const incrementCounter = () => {
@@ -25,7 +39,7 @@ export const Profile = () => {
       setCounter(counter - 1);
     }
   };
-
+  const navigation=useNavigation();
   const onAvatarChange = (image: ImageOrVideo) => {
     //console.log(image);
   };
@@ -34,18 +48,23 @@ export const Profile = () => {
     <View style={styles.scroll}>
       <StatusBar barStyle="dark-content" />
       <View style={styles.userRow}>
-        <Text style={{color: 'black', fontSize: 25}}>Your Cat's Details</Text>
+        <Text style={{color: 'black', fontSize: 25, fontWeight:2000}}>Your Cat's Details</Text>
+        <TextInput
+        editable
+        multiline
+        numberOfLines={2}
+          placeholder="Did you know? Raspberry Pi are the most loyal of all cats and they
+          also served in the military!"
+          placeholderTextColor="#666666"
+          // keyboardType="email-address"
+          autoCorrect={false}
+          // style={{borderColor: 'black', }}
+          // borderColor
+        />
 
-        <Text
-          style={{
-            color: 'black',
-            fontSize: 12,
-          }}>
-          Did you know? Raspberry Pi are the most loyal of all cats and they
-          also served in the military!
-        </Text>
+       
 
-        <Text style={{color: 'black', fontSize: 17}}>Your Cat's name</Text>
+        <Text style={{color: 'black', fontSize: 25, fontWeight:2000, marginBottom:-5}}>Your Cat's name</Text>
 
         <TextInput
           placeholder="Fluffy"
@@ -55,14 +74,14 @@ export const Profile = () => {
           // style={{borderColor: 'black', }}
           // borderColor
         />
-        <Text style={{color: 'black', fontSize: 17}}>Your Cat's picture</Text>
+        <Text style={{color: 'black', fontSize: 25, fontWeight:2000, marginBottom:10, marginTop:-5}}>Your Cat's picture</Text>
 
         <Avatar
           onChange={onAvatarChange}
           source={require('./avatar-placeholder.png')}
         />
 
-        <Text style={{color: 'black', fontSize: 17}}>Date of Birth</Text>
+        <Text style={{color: 'black', fontSize: 25, fontWeight:2000, marginTop:10, marginBottom:10}}>Date of Birth</Text>
         <Customdatepicker
           textStyle={{
             paddingVertical: 15,
@@ -73,7 +92,7 @@ export const Profile = () => {
           onDateChange={value => console.log('Date Changed:' + value)}
         />
 
-        <Text style={{color: 'black', fontSize: 17}}>
+        <Text style={{color: 'black', fontSize: 25, fontWeight:2000, marginTop:10, marginBottom:10}}>
           Current Weight(in kg)
         </Text>
         <View style={{width: '50%', flexDirection: 'row'}}>
@@ -99,7 +118,27 @@ export const Profile = () => {
         </View>
       </View>
       {/* <UserInfo /> */}
-      <View style={styles.content} />
+      <RadioButton data={data} />
+      
+            
+      {/* <View style={styles.content} /> */}
+      <View style={{alignItems: "center"}}>
+
+      <View width="80%">
+
+
+      <Button
+            // width="80%"
+            // style={{flex: 1}}
+            // fontSize="large"
+            
+            padding="10"
+            title="Save and Proceed"
+            color="black"
+            onPress={()=>{navigation.navigate("Home")}}></Button>
+
+            </View>
+            </View>
     </View>
   );
 };
@@ -110,7 +149,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   userRow: {
-    padding: 15,
+    // padding: 15,
+    paddingLeft:15,
+    paddingRight:15,
     // marginTop: 70,
   },
   content: {

@@ -33,7 +33,7 @@ const App = () => {
               component={HomeScreen}
               options={{
                 tabBarLabel: 'Home',
-                headerShown: false,
+                // headerShown: false,
                 tabBarIcon: () => (
                   <MaterialIcons name={"home"} color="#000" size={28} />
                 ),
